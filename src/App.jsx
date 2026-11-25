@@ -1,32 +1,38 @@
-import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
-import { ChessListPage } from './pages/ChessListPage.jsx';
-import { ChessSinglePage } from './pages/ChessSinglePage.jsx';
-import { CreateChessPage } from './pages/CreateChessPage.jsx';
-import { ChessModPage } from './pages/ChessModPage.jsx';
-
+import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
+import { DartsListPage } from './pages/DartsListPage.jsx';
+import { DartsSinglePage } from './pages/DartsSinglePage.jsx';
+import { CreateDartsPage } from './pages/CreateDartsPage.jsx';
+import { DartsModPage } from './pages/DartsModPage.jsx';
+import { DartsDelPage } from './pages/DartsDelPage.jsx';
 import './App.css';
 
-export const App = () => {
+export function App() {
   return (
-    <BrowserRouter>
-      <nav className="navbar navbar-expand-sm navbar-light bg-light p-2">
-        <NavLink to="/" className="p-2 m-1 text-decoration-none text-black">
-          Sakkozók
-        </NavLink>
-        <NavLink to="/new-chess" className="p-2 m-1 text-decoration-none text-black">
-          <i className="bi bi-plus-circle-fill"></i> Új sakkozó
-        </NavLink>
+    <Router>
+      <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
+        <div className="container-fluid">
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/">Dartsozók</NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/create-darts">Új dartsozó</NavLink>
+              </li>
+            </ul>
+          </div>
+        </div>
       </nav>
 
       <Routes>
-        <Route path="/" element={<ChessListPage />} />
-        <Route path="/chess/:chessId" element={<ChessSinglePage />} />
-        <Route path="/new-chess" element={<CreateChessPage />} />
-        <Route path="/mod-chess/:chessId" element={<ChessModPage />} />
-        <Route path='/del-chess/:chessId' element={}></Route>
+        <Route path="/" element={<DartsListPage />} />
+        <Route path="/darts/:dartsId" element={<DartsSinglePage />} />
+        <Route path="/create-darts" element={<CreateDartsPage />} />
+        <Route path="/mod-darts/:dartsId" element={<DartsModPage />} />
+        <Route path="/del-darts/:dartsId" element={<DartsDelPage />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
-};
+}
 
 export default App;
